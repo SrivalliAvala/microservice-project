@@ -30,7 +30,7 @@
 # ENV PRODUCT_CATALOG_PORT 8088
 # ENTRYPOINT [ "./product-catalog" ]
 
-FROM golang:1.21 AS builder
+FROM golang:1.22 AS builder
 WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
