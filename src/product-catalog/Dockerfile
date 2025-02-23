@@ -39,7 +39,7 @@ RUN go build -o main .
 
 FROM alpine:latest
 WORKDIR /root/
-COPY --from=builder /app/main .
-EXPOSE 8080
+COPY --from=builder /app/main ./
+ENV PRODUCT_CATALOG_PORT 8088
 CMD ["./main"]
 
