@@ -35,12 +35,11 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN go build -o /app/main .
+RUN go build -o product-catalog .
 
 FROM alpine:latest
-WORKDIR /root/
-COPY --from=builder /app/main ./
-RUN chmod +x /root/main
+WORKDIR /app
+COPY --from=builder /app/product-catalog/ ./
 ENV PRODUCT_CATALOG_PORT 8088
-CMD ["./main"]
+CMD ["./product-catalog"]
 
